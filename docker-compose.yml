@@ -1,0 +1,27 @@
+
+services:
+  medusa:
+    build: .
+    container_name: medusa-backend
+    ports:
+      - "7001:7001"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://swapna:akula@db:5432/swapna_medusa
+      - PORT=7001
+    command: "npm run start"
+
+  db:
+    image: postgres:14
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: swapna
+      POSTGRES_PASSWORD: akula
+      POSTGRES_DB: swapna_medusa
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
+
