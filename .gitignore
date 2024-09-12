@@ -12,6 +12,8 @@ coverage
 .src/
 .data/
 
+!src/**
+
 ./tsconfig.tsbuildinfo
 .package-lock.json
 yarn.lock
